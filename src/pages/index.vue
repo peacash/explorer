@@ -50,7 +50,7 @@ export default {
 		}
 	},
     mounted() {
-		document.title = "Explore - Pea";
+		document.title = "Explorer - Pea";
 		fetch("http://localhost:8080/json").then(res => res.json()).then(data => {
 			this.json = data
 		})
