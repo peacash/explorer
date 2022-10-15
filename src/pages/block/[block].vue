@@ -33,7 +33,7 @@ export default {
 		}
 	},
     mounted() {
-		document.title = "Block - Pea";
+		document.title = this.$route.params.block + " - Block - Explorer - Pea";
 		this.fetchData();
     },
 	watch: {

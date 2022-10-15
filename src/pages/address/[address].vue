@@ -37,7 +37,7 @@ export default {
 		}
 	},
     mounted() {
-		document.title = "Address - Pea";
+		document.title = this.$route.params.address + " - Address - Explorer - Pea";
 		this.fetchData();
     },
 	watch: {

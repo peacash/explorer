@@ -63,7 +63,7 @@ export default {
 		}
 	},
     mounted() {
-		document.title = "Search - Pea";
+		document.title = "Search - Explorer - Pea";
 		this.fetchData();
     },
 	watch: {

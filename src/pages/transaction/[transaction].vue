@@ -33,7 +33,7 @@ export default {
 		}
 	},
     mounted() {
-		document.title = "Transaction - Pea";
+		document.title = this.$route.params.transaction + " - Transaction - Explorer - Pea";
 		this.fetchData();
     },
 	watch: {

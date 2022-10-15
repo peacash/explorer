@@ -33,7 +33,7 @@ export default {
 		}
 	},
     mounted() {
-		document.title = "Stake - Pea";
+		document.title = this.$route.params.stake + " - Stake - Explorer - Pea";
 		this.fetchData();
     },
 	watch: {
