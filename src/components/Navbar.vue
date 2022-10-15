@@ -26,8 +26,8 @@
 							px-3
 							inline-flex
 							items-center
-							focus:outline-none focus:ring-1 focus:ring-inset focus:ring-white sm:focus:ring-black
-							hover:outline-none hover:ring-1 hover:ring-outset hover:ring-white sm:hover:ring-black
+							focus:outline-none focus:ring-1 focus:ring-inset focus:ring-black
+							hover:outline-none hover:ring-1 hover:ring-outset hover:ring-black
 						"
 					>
 						{{ link.text }}
@@ -42,8 +42,8 @@
 							px-3
 							inline-flex
 							items-center
-							focus:outline-none focus:ring-1 focus:ring-inset focus:ring-white sm:focus:ring-black
-							hover:outline-none hover:ring-1 hover:ring-outset hover:ring-white sm:hover:ring-black
+							focus:outline-none focus:ring-1 focus:ring-inset focus:ring-black
+							hover:outline-none hover:ring-1 hover:ring-outset hover:ring-black
 						"
 						rel="noopener"
 					>
@@ -69,7 +69,7 @@
 					href: [
 						{
 							text: "Github",
-							href: "https://github.com/peacash"
+							href: "https://github.com/peacash/explorer"
 						}
 					]
 				}

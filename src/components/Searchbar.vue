@@ -11,7 +11,7 @@
         class="
             bg-white
             text-black
-            rounded
+            sm:rounded
             shadow-lg
         "
         type="text" placeholder="Search Blockchain, Transactions, Addresses, Blocks and Stakes">
