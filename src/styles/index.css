@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+	body {
+		overscroll-behavior-y: none;
+		@apply min-h-screen min-w-full fixed;
+	}
+	#app {
+		overscroll-behavior-y: none;
+		@apply overflow-auto h-[calc(100vh)];
+	}
+}
+@layer components {
+	body {
+		background-color: #fef;
+	}
+	.custom-scroll {
+		scrollbar-width: thin;
+		scrollbar-color: theme('colors.gray.100') #ffffff;
+	}
+	.custom-scroll::-webkit-scrollbar {
+		width: 10px;
+	}
+	.custom-scroll::-webkit-scrollbar-thumb {
+		background: #bfaaee66;
+	}
+	.custom-scroll::-webkit-scrollbar-thumb:hover {
+		background: #bfaaee99;
+	}
+	.custom-scroll::-webkit-scrollbar-thumb:active {
+		background: #bfaaeecc;
+	}
+	.custom-scroll::-webkit-scrollbar-track {
+		background: #000;
+	}
+	.grid-layout {
+		grid-template-rows: auto 1fr;
+	}
+	.grid-layout-container {
+		grid-template-rows: 1fr auto;
+	}
+}
