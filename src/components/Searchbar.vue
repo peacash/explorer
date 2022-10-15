@@ -48,7 +48,8 @@ export default {
             clearTimeout(this.timer)
             this.timer = setTimeout(() => {
                 localStorage.setItem('api', this.api_value)
-                this.$router.push('/search/' + this.search_value)
+                if (this.search_value) this.$router.push('/search/' + this.search_value)
+                else this.$router.push('/')
             }, 250)
 		}
 	},

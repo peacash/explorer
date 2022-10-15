@@ -10,7 +10,7 @@
 		md:max-w-7xl
 		grid md:grid-cols-2 gap-2 sm:gap-6
 	">
-		<Description class="col-span-full text-justify md:text-left">
+		<Description v-if="balance !== null && balance_staked !== null" class="col-span-full text-justify md:text-left">
 			<Bar class="mt-2" />
 			<Address :balance="balance" :balance_staked="balance_staked" />
 			<div class="my-40"></div>
@@ -21,8 +21,8 @@
 export default {
     data() {
 		return {
-            balance: 0,
-            balance_staked: 0
+            balance: null,
+            balance_staked: null
 		}
 	},
 	methods: {

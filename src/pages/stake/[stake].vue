@@ -10,7 +10,7 @@
 		md:max-w-7xl
 		grid md:grid-cols-2 gap-2 sm:gap-6
 	">
-		<Description class="col-span-full text-justify md:text-left">
+		<Description v-if="stake !== null" class="col-span-full text-justify md:text-left">
 			<Bar class="mt-2" />
 			<Stake :stake="stake" />
 			<div class="my-40"></div>
@@ -21,7 +21,7 @@
 export default {
     data() {
 		return {
-			stake: {"public_key":"0x000000000000000000000000000000000000000000000000000000000000000000000000","amount":0,"deposit":false,"fee":0,"timestamp":0,"signature":"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"}
+			stake: null
 		}
 	},
 	methods: {

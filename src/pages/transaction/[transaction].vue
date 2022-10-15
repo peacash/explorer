@@ -10,7 +10,7 @@
 		md:max-w-7xl
 		grid md:grid-cols-2 gap-2 sm:gap-6
 	">
-		<Description class="col-span-full text-justify md:text-left">
+		<Description v-if="transaction !== null" class="col-span-full text-justify md:text-left">
 			<Bar class="mt-2" />
 			<Transaction :transaction="transaction" />
 			<div class="my-40"></div>
@@ -21,7 +21,7 @@
 export default {
     data() {
 		return {
-			transaction: {"public_key_input":"0x000000000000000000000000000000000000000000000000000000000000000000000000","public_key_output":"0x000000000000000000000000000000000000000000000000000000000000000000000000","amount":0,"fee":0,"timestamp":0,"signature":"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"}
+			transaction: null
 		}
 	},
 	methods: {
