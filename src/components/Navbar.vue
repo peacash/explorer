@@ -1,6 +1,5 @@
 <style scoped>
 	.custom-button {
-		transition: color 500ms;
 		font-weight: 500;
 	}
 	header {
@@ -13,8 +12,8 @@
 	}
 </style>
 <template>
-	<div class="relative select-none z-20">
-		<header class="absolute sm:sticky w-full custom-header text-white sm:text-black">
+	<div class="select-none z-20">
+		<header class="w-full custom-header">
 			<div class="max-w-7xl mx-auto px-4 flex justify-between lg:px-8">
 				<nav class="flex py-2 space-x-4 lg:space-x-8" aria-label="Global navigation">
 					<router-link

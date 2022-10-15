@@ -1,29 +1,4 @@
 <template>
-	<div class="sm:m-6">
-		<div class="
-			mx-auto
-			w-full
-			flex
-			flex-col
-			justify-center
-			prose sm:prose-lg
-			md:max-w-7xl
-			relative
-		">
-			<h1 class="
-				sm:rounded
-				flex
-				justify-center
-				shadow-lg
-				bg-black
-				select-none
-			">
-				<Background2 class="absolute h-full w-full" />
-				<img class="user-select-none h-28 h-80 md:h-40 z-10 w-full px-6" src="/peacash.svg" alt="">
-				<div class="absolute z-10 w-full h-full"></div>
-			</h1>
-		</div>
-	</div>
 	<div class="
 		mx-auto
 		w-full
