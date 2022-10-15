@@ -26,7 +26,7 @@ export default {
 	},
     mounted() {
 		document.title = "Explorer - Pea";
-		fetch("http://localhost:8080/json").then(res => res.json()).then(data => {
+		fetch(window.localStorage.getItem("api") + "/json").then(res => res.json()).then(data => {
 			this.json = data
 		})
     }

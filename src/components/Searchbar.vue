@@ -2,8 +2,22 @@
     input:hover {
         background-color: #efe;
     }
+    input {
+        max-width: 40rem;
+    }
 </style>
 <template>
+    <input
+        v-model=api_value
+        v-on:input="search"
+        class="
+            bg-white
+            text-black
+            sm:rounded
+            shadow-lg
+            flex mx-auto w-full my-4
+        "
+        type="text" placeholder="http://localhost:8080">
     <input
         v-model=search_value
         ref="search"
@@ -13,6 +27,7 @@
             text-black
             sm:rounded
             shadow-lg
+            flex mx-auto w-full my-4
         "
         type="text" placeholder="Search Blockchain, Transactions, Addresses, Blocks and Stakes">
 </template>
@@ -20,17 +35,21 @@
 export default {
 	data() {
 		return {
-			search_value: this.$route.params.search
+			search_value: this.$route.params.search || "",
+            api_value: localStorage.getItem('api') || (() => {
+                let api = "http://localhost:8080"
+                localStorage.setItem('api', api)
+                return api
+            })()
 		}
 	},
 	methods: {
 		search() {
             clearTimeout(this.timer)
-            let delay = 250
             this.timer = setTimeout(() => {
-                if (this.search_value) this.$router.push('/search/' + this.search_value)
-                else this.$router.push('/')
-            }, delay)
+                localStorage.setItem('api', this.api_value)
+                this.$router.push('/search/' + this.search_value)
+            }, 250)
 		}
 	},
 	mounted() {

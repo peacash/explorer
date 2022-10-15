@@ -27,7 +27,7 @@ export default {
 	methods: {
 		fetchData() {
 			if (!this.$route.params.stake) return
-			fetch("http://localhost:8080/stake/" + this.$route.params.stake).then(res => res.json()).then(data => {
+			fetch(window.localStorage.getItem("api") + "/stake/" + this.$route.params.stake).then(res => res.json()).then(data => {
 				this.stake = data
 			})
 		}

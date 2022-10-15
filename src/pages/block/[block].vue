@@ -27,7 +27,7 @@ export default {
 	methods: {
 		fetchData() {
 			if (!this.$route.params.block) return
-			fetch("http://localhost:8080/block/" + this.$route.params.block).then(res => res.json()).then(data => {
+			fetch(window.localStorage.getItem("api") + "/block/" + this.$route.params.block).then(res => res.json()).then(data => {
 				this.block = data
 			})
 		}

@@ -27,7 +27,7 @@ export default {
 	methods: {
 		fetchData() {
 			if (!this.$route.params.transaction) return
-			fetch("http://localhost:8080/transaction/" + this.$route.params.transaction).then(res => res.json()).then(data => {
+			fetch(window.localStorage.getItem("api") + "/transaction/" + this.$route.params.transaction).then(res => res.json()).then(data => {
 				this.transaction = data
 			})
 		}

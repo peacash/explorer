@@ -32,7 +32,7 @@ export default {
 			}
 			search = search.toLowerCase()
 			if (search === parseInt(search).toString() && parseInt(search) !== NaN) {
-				fetch("http://localhost:8080/hash/" + search).then(res => res.json()).then(data => {
+				fetch(window.localStorage.getItem("api") + "/hash/" + search).then(res => res.json()).then(data => {
 					this.$router.replace('/block/' + data)
 				}).catch(() => {
 					this.failed = true
@@ -40,20 +40,20 @@ export default {
 				return
 			}
 			if (search.toLowerCase().startsWith('0x')) {
-				fetch("http://localhost:8080/balance/" + search).then(res => res.json()).then(data => {
+				fetch(window.localStorage.getItem("api") + "/balance/" + search).then(res => res.json()).then(data => {
 					this.$router.replace('/address/' + search)
 				}).catch(() => {
 					this.failed = true
 				})
 				return
 			}
-			fetch("http://localhost:8080/block/" + search).then(res => res.json()).then(data => {
+			fetch(window.localStorage.getItem("api") + "/block/" + search).then(res => res.json()).then(data => {
 				this.$router.replace('/block/' + search)
 			}).catch(() => {
-				fetch("http://localhost:8080/transaction/" + search).then(res => res.json()).then(data => {
+				fetch(window.localStorage.getItem("api") + "/transaction/" + search).then(res => res.json()).then(data => {
 					this.$router.replace('/transaction/' + search)
 				}).catch(() => {
-					fetch("http://localhost:8080/stake/" + search).then(res => res.json()).then(data => {
+					fetch(window.localStorage.getItem("api") + "/stake/" + search).then(res => res.json()).then(data => {
 						this.$router.replace('/stake/' + search)
 					}).catch(() => {
 						this.failed = true

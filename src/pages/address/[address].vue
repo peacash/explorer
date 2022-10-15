@@ -28,10 +28,10 @@ export default {
 	methods: {
 		fetchData() {
 			if (!this.$route.params.address) return
-			fetch("http://localhost:8080/balance/" + this.$route.params.address).then(res => res.json()).then(data => {
+			fetch(window.localStorage.getItem("api") + "/balance/" + this.$route.params.address).then(res => res.json()).then(data => {
 				this.balance = data
 			})
-			fetch("http://localhost:8080/balance_staked/" + this.$route.params.address).then(res => res.json()).then(data => {
+			fetch(window.localStorage.getItem("api") + "/balance_staked/" + this.$route.params.address).then(res => res.json()).then(data => {
 				this.balance_staked = data
 			})
 		}
