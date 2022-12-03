@@ -1,23 +1,18 @@
 <style scoped>
 table {
-	font-family: 'Courier New', Courier, monospace;
 	font-weight: 600;
 	border-collapse: collapse;
 	width: 100%;
 }
 td {
-	border: 1px solid #ddd;
-	text-align: left;
 	padding: 8px;
-}
-td:nth-child(odd) {
-	padding-right: 16px;
+	font-family: 'Courier New', Courier, monospace;
 }
 td:nth-child(even) {
 	word-break: break-word;
 }
 tr:nth-child(even) {
-	background-color: #eee;
+	background-color: #f6f6f6;
 }
 .link { text-decoration: none; font-weight: 600; }
 .link:hover {
@@ -37,48 +32,106 @@ tr:nth-child(even) {
 		grid md:grid-cols-2 gap-2 sm:gap-6
 	">
 		<Description class="col-span-full text-justify md:text-left">
-			<h2 class="mx-auto uppercase" style="font-weight: 300;">block</h2>
 			<table class="mx-auto">
-				<tr v-if="height">
-					<td>Height</td>
-					<td>{{ height }}</td>
+				<tr class="mx-auto text-xl flex justify-center pb-2">Block</tr>
+				<tr v-if="(height !== null)" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Height</td>
+					<td class="
+						flex justify-left w-full
+					">{{ height }}</td>
 				</tr>
-				<tr v-if="block">
-					<td>Hash</td>
-					<td v-if="shorten_hash" @click="(shorten_hash = false)">{{ shorten(block.hash) }}</td>
-					<td v-else>{{ block.hash }}</td>
+				<tr v-if="block" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Hash</td>
+					<td v-if="shorten_hash" @click="(shorten_hash = false)" class="
+						flex justify-left w-full
+					">{{ shorten(block.hash) }}</td>
+					<td v-else class="
+						flex justify-left w-full
+					">{{ block.hash }}</td>
 				</tr>
-				<tr v-if="block">
-					<td>Previous&nbsp;hash</td>
-					<td v-if="shorten_previous_hash" @click="(shorten_previous_hash = false)">{{ shorten(block.previous_hash) }}</td>
-					<td v-else>{{ block.previous_hash }}</td>
-					<td v-else>
+				<tr v-if="block" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Previous&nbsp;hash</td>
+					<td v-if="shorten_previous_hash" @click="(shorten_previous_hash = false)" class="
+						flex justify-left w-full
+					">{{ shorten(block.previous_hash) }}</td>
+					<td v-else-if="block.previous_hash == '0000000000000000000000000000000000000000000000000000000000000000'" class="
+						flex justify-left w-full
+					">{{ block.previous_hash }}</td>
+					<td v-else class="
+						flex justify-left w-full
+					">
         				<router-link class="link" :to="'/block/' + block.previous_hash">{{ block.previous_hash }}</router-link>
 					</td>
 				</tr>
-				<tr v-if="block">
-					<td>Timestamp</td>
-					<td>{{ new Date(block.timestamp * 1000).toLocaleString() }}</td>
+				<tr v-if="block" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Timestamp</td>
+					<td class="
+						flex justify-left w-full
+					">{{ new Date(block.timestamp * 1000).toLocaleString() }}</td>
 				</tr>
-				<tr v-if="block">
-					<td>Public&nbsp;key</td>
-					<td v-if="shorten_public_key" @click="(shorten_public_key = false)">{{ shorten(block.public_key) }}</td>
-					<td v-else>
+				<tr v-if="block" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Public&nbsp;key</td>
+					<td v-if="shorten_public_key" @click="(shorten_public_key = false)" class="
+						flex justify-left w-full
+					">{{ shorten(block.public_key) }}</td>
+					<td v-else class="
+						flex justify-left w-full
+					">
         				<router-link class="link" :to="'/address/' + block.public_key">{{ block.public_key }}</router-link>
 					</td>
 				</tr>
-				<tr v-if="block">
-					<td>Signature</td>
-					<td v-if="shorten_signature" @click="(shorten_signature = false)">{{ shorten(block.signature) }}</td>
-					<td v-else>{{ block.signature }}</td>
+				<tr v-if="block" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Signature</td>
+					<td v-if="shorten_signature" @click="(shorten_signature = false)" class="
+						flex justify-left w-full
+					">{{ shorten(block.signature) }}</td>
+					<td v-else class="
+						flex justify-left w-full
+					">{{ block.signature }}</td>
 				</tr>
-				<tr v-if="block">
-					<td>Transactions</td>
-					<td>{{ block.transactions.length }}</td>
+				<tr v-if="block" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Transactions</td>
+					<td class="
+						flex justify-left w-full
+					">{{ block.transactions.length }}</td>
 				</tr>
-				<tr v-if="block">
-					<td>Stakes</td>
-					<td>{{ block.stakes.length }}</td>
+				<tr v-if="block" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Stakes</td>
+					<td class="
+						flex justify-left w-full
+					">{{ block.stakes.length }}</td>
 				</tr>
 			</table>
 			<Transactions v-if="block" :transactions="block.transactions" />
