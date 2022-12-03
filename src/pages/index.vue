@@ -13,12 +13,7 @@
 		<Description class="col-span-full text-justify md:text-left">
 			<Bar class="mt-2" />
 			<div v-if="(!sync && !ifo && !dynamic && !trusted && timeout)" class="flex flex-col justify-center mx-auto my-4">
-				<div>API endpoint <i>{{ api }}</i> seems unresponsive.</div>
-				<div v-if="https">
-					Try the
-					<a :href="'http://' + host">http version</a>
-					of this website.
-				</div>
+				<Unresponsive :api="api" />
 			</div>
     		<h2 v-if="(sync || info)" class="mx-auto uppercase" style="font-weight: 300;">general</h2>
 			<Sync v-if="sync" :sync="sync" />

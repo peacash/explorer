@@ -73,9 +73,6 @@ export default {
     mounted() {
 		document.title = this.$route.params.address + " - Address - Explorer - Pea";
 		this.loop();
-		setTimeout(() => {
-			this.timeout = true
-		}, 1000)
     },
 	unmounted() {
 		clearInterval(this.interval)
