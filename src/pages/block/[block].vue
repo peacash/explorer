@@ -136,6 +136,7 @@ tr:nth-child(even) {
 			</table>
 			<table v-if="block">
 				<tr class="mx-auto text-xl flex justify-center pb-2">Transactions</tr>
+    			<div v-if="!block.transactions.length" class="text-center italic">This block does not include any transactions.</div>
 				<tr v-for="(hash, index) in block.transactions" :key="(hash, index)" class="
 						flex w-full
 					">
@@ -151,6 +152,7 @@ tr:nth-child(even) {
 			</table>
 			<table v-if="block">
 				<tr class="mx-auto text-xl flex justify-center pb-2">Stakes</tr>
+    			<div v-if="!block.stakes.length" class="text-center italic">This block does not include any stakes.</div>
 				<tr v-for="(hash, index) in block.stakes" :key="(hash, index)" class="
 						flex w-full
 					">
