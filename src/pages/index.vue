@@ -12,7 +12,9 @@
 	">
 		<Description class="col-span-full text-justify md:text-left">
 			<Bar class="mt-2" />
-			<Sync :sync="sync" />
+    		<h2 class="mx-auto uppercase" style="font-weight: 300;">general</h2>
+			<Sync v-if="sync" :sync="sync" />
+			<Info v-if="info" :info="info" />
 			<h2 class="mx-auto uppercase" style="font-weight: 300;">blocks</h2>
 			<Blocks v-if="dynamic" :state="dynamic" :height="sync.height" />
 			<Blocks v-if="(dynamic && trusted)" :state="trusted" :height="sync.height - dynamic.latest_hashes.length" />
@@ -27,6 +29,7 @@ export default {
 			dynamic: null,
 			trusted: null,
 			sync: null,
+			info: null,
 			interval: null
 		}
 	},
@@ -53,6 +56,9 @@ export default {
 			})
 			fetch(window.localStorage.getItem("api") + "/sync").then(res => res.json()).then(data => {
 				this.sync = data
+			})
+			fetch(window.localStorage.getItem("api") + "/info").then(res => res.json()).then(data => {
+				this.info = data
 			})
 		}
 	},

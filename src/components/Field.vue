@@ -16,8 +16,8 @@
         m-6
     ">
         <div v-if="name">{{ name }}</div>
-        <router-link v-if="to" class="link uppercase" :to=to>{{ value }}</router-link>
-        <span v-else class="uppercase">{{ value }}</span>
+        <router-link v-if="to" class="link" :to=to>{{ value }}</router-link>
+        <span v-else>{{ value }}</span>
     </div>
 </template>
 <script>
