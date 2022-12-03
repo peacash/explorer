@@ -56,6 +56,17 @@ tr:nth-child(even) {
 					<td>{{ sync.height }}</td>
 				</tr>
 				<tr v-if="info">
+					<td>Tree&nbsp;size</td>
+					<td>{{ info.tree_size }}</td>
+				</tr>
+				<tr v-if="info">
+					<td>Public&nbsp;key</td>
+					<td v-if="shorten_public_key" @click="(shorten_public_key = false)">{{ shorten(info.public_key) }}</td>
+					<td v-else>
+        				<router-link class="link" :to="'/address/' + info.public_key">{{ info.public_key }}</router-link>
+					</td>
+				</tr>
+				<tr v-if="info">
 					<td>Time</td>
 					<td>{{ info.time }}</td>
 				</tr>
@@ -89,7 +100,8 @@ export default {
 			timeout: false,
 			https: window.location.protocol === "https:",
 			host: window.location.host,
-			api: null
+			api: null,
+			shorten_public_key: true
 		}
 	},
     mounted() {
@@ -108,6 +120,9 @@ export default {
 			this.interval = setInterval(() => {
 				this.fetchData()
 			}, 3000);
+		},
+		shorten(string) {
+			return string.slice(0, 12) + "..." + string.slice(-8)
 		},
 		fetchData() {
 			this.api = window.localStorage.getItem("api");
