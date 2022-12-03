@@ -30,7 +30,23 @@ export default {
             balance_staked: null
 		}
 	},
+    mounted() {
+		document.title = this.$route.params.address + " - Address - Explorer - Pea";
+		this.loop();
+		setTimeout(() => {
+			this.timeout = true
+		}, 1000)
+    },
+	unmounted() {
+		clearInterval(this.interval)
+	},
 	methods: {
+		loop() {
+			this.fetchData();
+			this.interval = setInterval(() => {
+				this.fetchData()
+			}, 3000);
+		},
 		fetchData() {
 			if (!this.$route.params.address) return
 			fetch(window.localStorage.getItem("api") + "/balance/" + this.$route.params.address).then(res => res.json()).then(data => {
@@ -55,10 +71,6 @@ export default {
 			return string
 		}
 	},
-    mounted() {
-		document.title = this.$route.params.address + " - Address - Explorer - Pea";
-		this.fetchData();
-    },
 	watch: {
 		'$route.params': {
 			handler() {
