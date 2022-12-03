@@ -12,7 +12,8 @@
 	">
 		<Description v-if="dynamic !== null" class="col-span-full text-justify md:text-left">
 			<Bar class="mt-2" />
-			<Blocks :dynamic="dynamic" :height="height" />
+			<Sync :sync="sync" />
+			<Blocks :dynamic="dynamic" :height="sync.height" />
 			<div class="my-40"></div>
 		</Description>
 	</div>
@@ -22,7 +23,7 @@ export default {
     data() {
 		return {
 			dynamic: null,
-			height: null,
+			sync: null,
 			interval: null
 		}
 	},
@@ -38,14 +39,14 @@ export default {
 			this.fetchData();
 			this.interval = setInterval(() => {
 				this.fetchData()
-			}, 10000);
+			}, 3000);
 		},
 		fetchData() {
 			fetch(window.localStorage.getItem("api") + "/dynamic").then(res => res.json()).then(data => {
 				this.dynamic = data
 			})
-			fetch(window.localStorage.getItem("api") + "/height").then(res => res.json()).then(data => {
-				this.height = data
+			fetch(window.localStorage.getItem("api") + "/sync").then(res => res.json()).then(data => {
+				this.sync = data
 			})
 		}
 	},
