@@ -3,6 +3,7 @@
         background-color: #efe;
     }
     input {
+        border: none;
         max-width: 40rem;
     }
 </style>
