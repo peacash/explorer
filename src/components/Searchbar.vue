@@ -7,29 +7,31 @@
     }
 </style>
 <template>
-    <input
-        v-model=api_value
-        v-on:input="search"
-        class="
-            bg-white
-            text-black
-            sm:rounded
-            shadow-lg
-            flex mx-auto w-full my-4
-        "
-        type="text" placeholder="http://localhost:9332">
-    <input
-        v-model=search_value
-        ref="search"
-        v-on:input="search"
-        class="
-            bg-white
-            text-black
-            sm:rounded
-            shadow-lg
-            flex mx-auto w-full my-4
-        "
-        type="text" placeholder="Search Blockchain, Transactions, Addresses, Blocks and Stakes">
+    <div class="px-2">
+        <input
+            v-model=api_value
+            v-on:input="search"
+            class="
+                bg-white
+                text-black
+                sm:rounded
+                shadow-lg
+                flex mx-auto w-full my-4
+            "
+            type="text" placeholder="http://localhost:9332">
+        <input
+            v-model=search_value
+            ref="search"
+            v-on:input="search"
+            class="
+                bg-white
+                text-black
+                sm:rounded
+                shadow-lg
+                flex mx-auto w-full my-4
+            "
+            type="text" placeholder="Search Blockchain, Transactions, Addresses, Blocks and Stakes">
+    </div>
 </template>
 <script>
 export default {
