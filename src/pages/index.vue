@@ -10,10 +10,12 @@
 		md:max-w-7xl
 		grid md:grid-cols-2 gap-2 sm:gap-6
 	">
-		<Description v-if="dynamic !== null" class="col-span-full text-justify md:text-left">
+		<Description class="col-span-full text-justify md:text-left">
 			<Bar class="mt-2" />
 			<Sync :sync="sync" />
-			<Blocks :dynamic="dynamic" :height="sync.height" />
+			<h2 class="mx-auto uppercase" style="font-weight: 300;">blocks</h2>
+			<Blocks v-if="dynamic" :state="dynamic" :height="sync.height" />
+			<Blocks v-if="(dynamic && trusted)" :state="trusted" :height="sync.height - dynamic.latest_hashes.length" />
 			<div class="my-40"></div>
 		</Description>
 	</div>
@@ -23,6 +25,7 @@ export default {
     data() {
 		return {
 			dynamic: null,
+			trusted: null,
 			sync: null,
 			interval: null
 		}
@@ -44,6 +47,9 @@ export default {
 		fetchData() {
 			fetch(window.localStorage.getItem("api") + "/dynamic").then(res => res.json()).then(data => {
 				this.dynamic = data
+			})
+			fetch(window.localStorage.getItem("api") + "/trusted").then(res => res.json()).then(data => {
+				this.trusted = data
 			})
 			fetch(window.localStorage.getItem("api") + "/sync").then(res => res.json()).then(data => {
 				this.sync = data
