@@ -48,7 +48,7 @@ tr:nth-child(even) {
 					<td>{{ sync.sync }}</td>
 				</tr>
 				<tr v-if="sync">
-					<td>Last block seen</td>
+					<td>Last&nbsp;block&nbsp;seen</td>
 					<td>{{ sync.last }}</td>
 				</tr>
 				<tr v-if="sync">
