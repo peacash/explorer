@@ -23,6 +23,8 @@
     		<h2 v-if="(sync || info)" class="mx-auto uppercase" style="font-weight: 300;">general</h2>
 			<Sync v-if="sync" :sync="sync" />
 			<Info v-if="info" :info="info" />
+			<h2 v-if="dynamic" class="mx-auto uppercase" style="font-weight: 300;">stakers</h2>
+			<Stakers v-if="dynamic" :state="dynamic" />
 			<h2 v-if="(dynamic || trusted)" class="mx-auto uppercase" style="font-weight: 300;">blocks</h2>
 			<Blocks v-if="dynamic" :state="dynamic" :height="sync.height" />
 			<Blocks v-if="(dynamic && trusted)" :state="trusted" :height="sync.height - dynamic.latest_hashes.length" />
