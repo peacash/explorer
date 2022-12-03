@@ -11,7 +11,6 @@
 		grid md:grid-cols-2 gap-2 sm:gap-6
 	">
 		<Description v-if="stake !== null" class="col-span-full text-justify md:text-left">
-			<Bar class="mt-2" />
 			<Stake :stake="stake" />
 			<div class="my-40"></div>
 		</Description>

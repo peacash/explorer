@@ -11,7 +11,6 @@
 		grid md:grid-cols-2 gap-2 sm:gap-6
 	">
 		<Description v-if="transaction !== null" class="col-span-full text-justify md:text-left">
-			<Bar class="mt-2" />
 			<Transaction :transaction="transaction" />
 			<div class="my-40"></div>
 		</Description>
