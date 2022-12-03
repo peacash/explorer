@@ -62,7 +62,7 @@ tr:nth-child(even) {
 				</tr>
 				<tr v-if="block">
 					<td>Public&nbsp;key</td>
-					<td v-if="shorten_forger" @click="(shorten_forger = false)">{{ shorten(block.public_key) }}</td>
+					<td v-if="shorten_public_key" @click="(shorten_public_key = false)">{{ shorten(block.public_key) }}</td>
 					<td v-else>
         				<router-link class="link" :to="'/address/' + block.public_key">{{ block.public_key }}</router-link>
 					</td>
@@ -95,7 +95,7 @@ export default {
 			height: null,
 			shorten_hash: true,
 			shorten_previous_hash: true,
-			shorten_forger: true,
+			shorten_public_key: true,
 			shorten_signature: true
 		}
 	},
