@@ -1,23 +1,19 @@
 <style scoped>
 table {
-	font-family: 'Courier New', Courier, monospace;
 	font-weight: 600;
 	border-collapse: collapse;
 	width: 100%;
 }
 td {
-	border: 1px solid #ddd;
 	text-align: left;
 	padding: 8px;
-}
-td:nth-child(odd) {
-	padding-right: 16px;
+	font-family: 'Courier New', Courier, monospace;
 }
 td:nth-child(even) {
 	word-break: break-word;
 }
 tr:nth-child(even) {
-	background-color: #eee;
+	background-color: #f6f6f6;
 }
 .link { text-decoration: none; font-weight: 600; }
 .link:hover {
@@ -41,49 +37,124 @@ tr:nth-child(even) {
 			<div v-if="(!sync && !ifo && !dynamic && !trusted && timeout)" class="flex flex-col justify-center mx-auto my-4">
 				<Unresponsive :api="api" />
 			</div>
-    		<h2 v-if="(sync || info)" class="mx-auto uppercase" style="font-weight: 300;">general</h2>
-			<table class="mx-auto">
-				<tr v-if="sync">
-					<td>Synchronization</td>
-					<td>{{ sync.sync }}</td>
+			<table>
+				<tr class="mx-auto text-xl flex justify-center pb-2">General information about Node</tr>
+				<tr v-if="sync" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Synchronization</td>
+					<td class="
+						flex justify-left w-full
+					">{{ sync.sync }}</td>
 				</tr>
-				<tr v-if="sync">
-					<td>Last&nbsp;block&nbsp;seen</td>
-					<td>{{ sync.last }}</td>
+				<tr v-if="sync" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Last&nbsp;block&nbsp;seen</td>
+					<td class="
+						flex justify-left w-full
+					">{{ sync.last }}</td>
 				</tr>
-				<tr v-if="sync">
-					<td>Height</td>
-					<td>{{ sync.height }}</td>
+				<tr v-if="sync" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Height</td>
+					<td class="
+						flex justify-left w-full
+					">{{ sync.height }}</td>
 				</tr>
-				<tr v-if="info">
-					<td>Tree&nbsp;size</td>
-					<td>{{ info.tree_size }}</td>
+				<tr v-if="info" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Tree&nbsp;size</td>
+					<td class="
+						flex justify-left w-full
+					">{{ info.tree_size }}</td>
 				</tr>
-				<tr v-if="info">
-					<td>Public&nbsp;key</td>
-					<td v-if="shorten_public_key" @click="(shorten_public_key = false)">{{ shorten(info.public_key) }}</td>
-					<td v-else>
+				<tr v-if="info" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Public&nbsp;key</td>
+					<td v-if="shorten_public_key" @click="(shorten_public_key = false)" class="
+						flex justify-left w-full
+					">{{ shorten(info.public_key) }}</td>
+					<td v-else class="
+						flex justify-left w-full
+					">
         				<router-link class="link" :to="'/address/' + info.public_key">{{ info.public_key }}</router-link>
 					</td>
 				</tr>
-				<tr v-if="info">
-					<td>Time</td>
-					<td>{{ info.time }}</td>
+				<tr v-if="info" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Time</td>
+					<td class="
+						flex justify-left w-full
+					">{{ info.time }}</td>
 				</tr>
-				<tr v-if="info">
-					<td>Uptime</td>
-					<td>{{ info.uptime }}</td>
+				<tr v-if="info" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Uptime</td>
+					<td class="
+						flex justify-left w-full
+					">{{ info.uptime }}</td>
 				</tr>
-				<tr v-if="info">
-					<td>Tick</td>
-					<td>{{ info.lag }} ms</td>
+				<tr v-if="info" class="
+					flex w-full
+				">
+					<td class="
+						flex flex-col justify-center w-60
+					">Tick</td>
+					<td class="
+						flex justify-left w-full
+					">{{ info.lag }} ms</td>
 				</tr>
 			</table>
-			<h2 v-if="dynamic" class="mx-auto uppercase" style="font-weight: 300;">stakers</h2>
-			<Stakers v-if="dynamic" :state="dynamic" />
-			<h2 v-if="(dynamic || trusted)" class="mx-auto uppercase" style="font-weight: 300;">blocks</h2>
-			<Blocks v-if="(dynamic && sync)" :state="dynamic" :height="sync.height" />
-			<Blocks v-if="(dynamic && trusted && sync)" :state="trusted" :height="sync.height - dynamic.latest_hashes.length" />
+			<table v-if="dynamic">
+				<tr class="mx-auto text-xl flex justify-center pb-2">Stakers Queue</tr>
+				<tr v-for="(public_key, index) in dynamic.stakers" :key="(hash, index)" class="
+						flex w-full
+					">
+					<td class="
+						flex flex-col justify-center
+					">#{{ index }}</td>
+					<td class="
+						flex justify-center w-full
+					">
+        				<router-link class="link" :to="('/address/' + public_key)">{{ public_key }}</router-link>
+					</td>
+				</tr>
+			</table>
+			<table v-if="(dynamic && sync && sync)">
+				<tr class="mx-auto text-xl flex justify-center pb-2">Latest Blocks</tr>
+				<tr v-for="(hash, index) in [...dynamic.latest_hashes, ...trusted.latest_hashes].concat()" :key="(hash, index)" class="
+						flex w-full
+					">
+					<td class="
+						flex flex-col justify-center
+					">#{{ sync.height - index }}</td>
+					<td class="
+						flex justify-center w-full
+					">
+        				<router-link class="link" :to="('/block/' + hash)">{{ hash }}</router-link>
+					</td>
+				</tr>
+			</table>
 			<div class="my-40"></div>
 		</Description>
 	</div>
