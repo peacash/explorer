@@ -12,9 +12,6 @@
 	">
 		<Description class="col-span-full text-justify md:text-left">
 			<Bar class="mt-2" />
-			<div v-if="timeout" class="flex flex-col justify-center mx-auto my-4">
-				<Unresponsive :api="api" />
-			</div>
 			<Search failed=failed />
 			<div class="my-40"></div>
 		</Description>
@@ -25,8 +22,7 @@ export default {
     data() {
 		return {
 			failed: false,
-			api: null,
-			timeout: false
+			api: null
 		}
 	},
 	methods: {
@@ -71,9 +67,6 @@ export default {
     mounted() {
 		document.title = "Search - Explorer - Pea";
 		this.fetchData();
-		setTimeout(() => {
-			this.timeout = true
-		}, 1000)
     },
 	watch: {
 		'$route.params': {
