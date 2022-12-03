@@ -134,8 +134,36 @@ tr:nth-child(even) {
 					">{{ block.stakes.length }}</td>
 				</tr>
 			</table>
-			<Transactions v-if="block" :transactions="block.transactions" />
-			<Stakes v-if="block" :stakes="block.stakes" />
+			<table v-if="block">
+				<tr class="mx-auto text-xl flex justify-center pb-2">Transactions</tr>
+				<tr v-for="(hash, index) in block.transactions" :key="(hash, index)" class="
+						flex w-full
+					">
+					<td class="
+						flex flex-col justify-center
+					">#{{ index }}</td>
+					<td class="
+						flex justify-center w-full
+					">
+        				<router-link class="link" :to="('/transaction/' + hash)">{{ hash }}</router-link>
+					</td>
+				</tr>
+			</table>
+			<table v-if="block">
+				<tr class="mx-auto text-xl flex justify-center pb-2">Stakes</tr>
+				<tr v-for="(hash, index) in block.stakes" :key="(hash, index)" class="
+						flex w-full
+					">
+					<td class="
+						flex flex-col justify-center
+					">#{{ index }}</td>
+					<td class="
+						flex justify-center w-full
+					">
+        				<router-link class="link" :to="('/stake/' + hash)">{{ hash }}</router-link>
+					</td>
+				</tr>
+			</table>
 			<div class="my-40"></div>
 		</Description>
 	</div>
