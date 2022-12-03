@@ -52,6 +52,9 @@ tr:nth-child(even) {
 					<td>Previous&nbsp;hash</td>
 					<td v-if="shorten_previous_hash" @click="(shorten_previous_hash = false)">{{ shorten(block.previous_hash) }}</td>
 					<td v-else>{{ block.previous_hash }}</td>
+					<td v-else>
+        				<router-link class="link" :to="'/block/' + block.previous_hash">{{ block.previous_hash }}</router-link>
+					</td>
 				</tr>
 				<tr v-if="block">
 					<td>Timestamp</td>
@@ -60,7 +63,9 @@ tr:nth-child(even) {
 				<tr v-if="block">
 					<td>Public&nbsp;key</td>
 					<td v-if="shorten_forger" @click="(shorten_forger = false)">{{ shorten(block.public_key) }}</td>
-					<td v-else>{{ block.public_key }}</td>
+					<td v-else>
+        				<router-link class="link" :to="'/address/' + block.public_key">{{ block.public_key }}</router-link>
+					</td>
 				</tr>
 				<tr v-if="block">
 					<td>Signature</td>
