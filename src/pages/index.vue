@@ -1,3 +1,8 @@
+<style scoped>
+	* {
+		font-weight: 600;
+	}
+</style>
 <template>
 	<div class="
 		mx-auto

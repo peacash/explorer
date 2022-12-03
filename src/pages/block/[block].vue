@@ -19,7 +19,7 @@ td:nth-child(even) {
 tr:nth-child(even) {
 	background-color: #eee;
 }
-.link { text-decoration: none; }
+.link { text-decoration: none; font-weight: 600; }
 .link:hover {
 	text-decoration: underline;
 }

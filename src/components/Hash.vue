@@ -1,4 +1,7 @@
 <style scoped>
+    * {
+        font-weight: 600;
+    }
     div {
         font-family: 'Courier New', Courier, monospace;
         word-break: break-word;
@@ -6,7 +9,7 @@
     span:nth-child(1) {
         word-break: normal;
     }
-	.link { text-decoration: none; }
+	.link { text-decoration: none; font-weight: 600; }
 </style>
 <template>
     <div class="
