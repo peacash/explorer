@@ -10,9 +10,9 @@
 		md:max-w-7xl
 		grid md:grid-cols-2 gap-2 sm:gap-6
 	">
-		<Description v-if="json !== null" class="col-span-full text-justify md:text-left">
+		<Description v-if="dynamic !== null" class="col-span-full text-justify md:text-left">
 			<Bar class="mt-2" />
-			<Blocks :json="json" />
+			<Blocks :dynamic="dynamic" :height="height" />
 			<div class="my-40"></div>
 		</Description>
 	</div>
@@ -21,14 +21,33 @@
 export default {
     data() {
 		return {
-			json: null
+			dynamic: null,
+			height: null,
+			interval: null
 		}
 	},
     mounted() {
 		document.title = "Explorer - Pea";
-		fetch(window.localStorage.getItem("api") + "/json").then(res => res.json()).then(data => {
-			this.json = data
-		})
-    }
+		this.loop();
+    },
+	unmounted() {
+		clearInterval(this.interval)
+	},
+	methods: {
+		loop() {
+			this.fetchData();
+			this.interval = setInterval(() => {
+				this.fetchData()
+			}, 10000);
+		},
+		fetchData() {
+			fetch(window.localStorage.getItem("api") + "/dynamic").then(res => res.json()).then(data => {
+				this.dynamic = data
+			})
+			fetch(window.localStorage.getItem("api") + "/height").then(res => res.json()).then(data => {
+				this.height = data
+			})
+		}
+	},
 }
 </script>
