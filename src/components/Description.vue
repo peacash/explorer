@@ -3,8 +3,9 @@
         shadow-lg
         flex
         flex-col
-        px-8
-        sm:px-12
+        px-2
+        sm:px-4
+        lg:px-40
         py-4
         bg-white
         xl:rounded
