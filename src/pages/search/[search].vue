@@ -11,8 +11,7 @@
 		grid md:grid-cols-2 gap-2 sm:gap-6
 	">
 		<Description class="col-span-full text-justify md:text-left">
-			<Bar class="mt-2" />
-			<Search failed=failed />
+			<Search v-if="timeout" failed=failed />
 			<div class="my-40"></div>
 		</Description>
 	</div>
@@ -22,7 +21,8 @@ export default {
     data() {
 		return {
 			failed: false,
-			api: null
+			api: null,
+			timeout: false
 		}
 	},
 	methods: {
@@ -67,6 +67,9 @@ export default {
     mounted() {
 		document.title = "Search - Explorer - Pea";
 		this.fetchData();
+		setTimeout(() => {
+			this.timeout = true
+		}, 200)
     },
 	watch: {
 		'$route.params': {
