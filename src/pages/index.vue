@@ -5,7 +5,6 @@ table {
 	width: 100%;
 }
 td {
-	text-align: left;
 	padding: 8px;
 	font-family: 'Courier New', Courier, monospace;
 }
