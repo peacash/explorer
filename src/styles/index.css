@@ -10,6 +10,9 @@
 		overscroll-behavior-y: none;
 		@apply overflow-auto h-[calc(100vh)];
 	}
+	td {
+		font-size: large;
+	}
 }
 @layer components {
 	body {
