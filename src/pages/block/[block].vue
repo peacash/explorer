@@ -37,6 +37,7 @@ tr:nth-child(even) {
 		grid md:grid-cols-2 gap-2 sm:gap-6
 	">
 		<Description class="col-span-full text-justify md:text-left">
+			<h2 class="mx-auto uppercase" style="font-weight: 300;">block</h2>
 			<table class="mx-auto">
 				<tr v-if="height">
 					<td>Height</td>
@@ -75,18 +76,6 @@ tr:nth-child(even) {
 					<td>{{ block.stakes.length }}</td>
 				</tr>
 			</table>
-			<h2 class="mx-auto uppercase" style="font-weight: 300;">block</h2>
-			<h4 class="mx-auto uppercase pb-12" style="font-weight: 500;">{{ $route.params.block }}</h4>
-			<div class="flex justify-center mx-auto">
-				<Field v-if="height" name="Height" :value="height" />
-				<Field v-if="block" name="Forged" :value="new Date(block.timestamp * 1000).toLocaleString()" />
-			</div>
-			<div class="flex flex-col justify-center mx-auto">
-				<Field v-if="block" name="Hash:" :value="shorten(block.hash)" />
-				<Field v-if="block" name="Previous hash:" :value="shorten(block.previous_hash)" :to="'/block/' + block.previous_hash" />
-				<Field v-if="block" name="Forger address:" :value="shorten(block.public_key)" :to="'/address/' + block.public_key" />
-				<Field v-if="block" name="Signature:" :value="shorten(block.signature)" />
-			</div>
 			<Transactions v-if="block" :transactions="block.transactions" />
 			<Stakes v-if="block" :stakes="block.stakes" />
 			<div class="my-40"></div>
