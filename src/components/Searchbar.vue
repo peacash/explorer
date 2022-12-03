@@ -17,7 +17,7 @@
             shadow-lg
             flex mx-auto w-full my-4
         "
-        type="text" placeholder="http://localhost:8080">
+        type="text" placeholder="http://localhost:9332">
     <input
         v-model=search_value
         ref="search"
@@ -37,7 +37,7 @@ export default {
 		return {
 			search_value: this.$route.params.search || "",
             api_value: localStorage.getItem('api') || (() => {
-                let api = "http://localhost:8080"
+                let api = "http://localhost:9332"
                 localStorage.setItem('api', api)
                 return api
             })()
