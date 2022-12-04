@@ -24,105 +24,47 @@ tr:nth-child(even) {
 		<Description>
 			<Table>
 				<TableRow class="text-xl justify-center pb-2">Block</TableRow>
-				<tr v-if="(height !== null)" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Height</td>
-					<td class="
-						flex justify-left w-full
-					">{{ height }}</td>
-				</tr>
-				<tr v-if="block" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Hash</td>
-					<td v-if="shorten_hash" @click="(shorten_hash = false)" class="
-						flex justify-left w-full
-					">{{ shorten(block.hash) }}</td>
-					<td v-else class="
-						flex justify-left w-full
-					">{{ block.hash }}</td>
-				</tr>
-				<tr v-if="block" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Previous&nbsp;hash</td>
-					<td v-if="shorten_previous_hash" @click="(shorten_previous_hash = false)" class="
-						flex justify-left w-full
-					">{{ shorten(block.previous_hash) }}</td>
-					<td v-else-if="block.previous_hash == '0000000000000000000000000000000000000000000000000000000000000000'" class="
-						flex justify-left w-full
-					">{{ block.previous_hash }}</td>
-					<td v-else class="
-						flex justify-left w-full
-					">
+				<TableRow v-if="(height !== null)">
+					<TD1 class="w-60">Height</TD1>
+					<TD2>{{ height }}</TD2>
+				</TableRow>
+				<TableRow v-if="block">
+					<TD1 class="w-60">Hash</TD1>
+					<TD2 v-if="shorten_hash" @click="(shorten_hash = false)">{{ shorten(block.hash) }}</TD2>
+					<TD2 v-else>{{ block.hash }}</TD2>
+				</TableRow>
+				<TableRow v-if="block">
+					<TD1 class="w-60">Previous&nbsp;hash</TD1>
+					<TD2 v-if="shorten_previous_hash" @click="(shorten_previous_hash = false)">{{ shorten(block.previous_hash) }}</TD2>
+					<TD2 v-else-if="(block.previous_hash == '0000000000000000000000000000000000000000000000000000000000000000')">{{ block.previous_hash }}</TD2>
+					<TD2 v-else>
 						<router-link class="link" :to="'/block/' + block.previous_hash">{{ block.previous_hash }}</router-link>
-					</td>
-				</tr>
-				<tr v-if="block" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Timestamp</td>
-					<td class="
-						flex justify-left w-full
-					">{{ new Date(block.timestamp * 1000).toLocaleString() }}</td>
-				</tr>
-				<tr v-if="block" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Public&nbsp;key</td>
-					<td v-if="shorten_public_key" @click="(shorten_public_key = false)" class="
-						flex justify-left w-full
-					">{{ shorten(block.public_key) }}</td>
-					<td v-else class="
-						flex justify-left w-full
-					">
+					</TD2>
+				</TableRow>
+				<TableRow v-if="block">
+					<TD1 class="w-60">Timestamp</TD1>
+					<TD2>{{ new Date(block.timestamp * 1000).toLocaleString() }}</TD2>
+				</TableRow>
+				<TableRow v-if="block">
+					<TD1 class="w-60">Public&nbsp;key</TD1>
+					<TD2 v-if="shorten_public_key" @click="(shorten_public_key = false)">{{ shorten(block.public_key) }}</TD2>
+					<TD2 v-else>
 						<router-link class="link" :to="'/address/' + block.public_key">{{ block.public_key }}</router-link>
-					</td>
-				</tr>
-				<tr v-if="block" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Signature</td>
-					<td v-if="shorten_signature" @click="(shorten_signature = false)" class="
-						flex justify-left w-full
-					">{{ shorten(block.signature) }}</td>
-					<td v-else class="
-						flex justify-left w-full
-					">{{ block.signature }}</td>
-				</tr>
-				<tr v-if="block" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Transactions</td>
-					<td class="
-						flex justify-left w-full
-					">{{ block.transactions.length }}</td>
-				</tr>
-				<tr v-if="block" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Stakes</td>
-					<td class="
-						flex justify-left w-full
-					">{{ block.stakes.length }}</td>
-				</tr>
+					</TD2>
+				</TableRow>
+				<TableRow v-if="block">
+					<TD1 class="w-60">Signature</TD1>
+					<TD2 v-if="shorten_signature" @click="(shorten_signature = false)">{{ shorten(block.signature) }}</TD2>
+					<TD2 v-else>{{ block.signature }}</TD2>
+				</TableRow>
+				<TableRow v-if="block">
+					<TD1 class="w-60">Transactions</TD1>
+					<TD2>{{ block.transactions.length }}</TD2>
+				</TableRow>
+				<TableRow v-if="block">
+					<TD1 class="w-60">Stakes</TD1>
+					<TD2>{{ block.stakes.length }}</TD2>
+				</TableRow>
 			</table>
 		</Description>
 		<Description>
