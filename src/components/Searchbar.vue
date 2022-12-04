@@ -4,11 +4,11 @@
     }
     input {
         border: none;
-        max-width: 40rem;
+        max-width: 60rem;
     }
 </style>
 <template>
-    <div class="px-2">
+    <Description>
         <input
             v-model=api_value
             v-on:input="search"
@@ -17,7 +17,7 @@
                 text-black
                 sm:rounded
                 shadow-lg
-                flex mx-auto w-full my-4
+                flex mx-auto w-full
             "
             type="text" placeholder="http://localhost:9332">
         <input
@@ -29,10 +29,10 @@
                 text-black
                 sm:rounded
                 shadow-lg
-                flex mx-auto w-full my-4
+                flex mx-auto w-full
             "
             type="text" placeholder="Search Blockchain, Transactions, Addresses, Blocks and Stakes">
-    </div>
+    </Description>
 </template>
 <script>
 export default {

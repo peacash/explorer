@@ -20,20 +20,10 @@ tr:nth-child(even) {
 }
 </style>
 <template>
-	<div class="
-		mx-auto
-		w-full
-		h-full
-		flex
-		flex-col
-		justify-center
-		prose sm:prose-lg
-		md:max-w-7xl
-		grid md:grid-cols-2 gap-2 sm:gap-6
-	">
-		<Description class="col-span-full text-justify md:text-left">
-			<table class="mx-auto">
-				<tr class="mx-auto text-xl flex justify-center pb-2">Block</tr>
+	<div class="flex flex-col gap-2 my-2 w-full">
+		<Description>
+			<Table>
+				<TableRow class="text-xl justify-center pb-2">Block</TableRow>
 				<tr v-if="(height !== null)" class="
 					flex w-full
 				">
@@ -72,7 +62,7 @@ tr:nth-child(even) {
 					<td v-else class="
 						flex justify-left w-full
 					">
-        				<router-link class="link" :to="'/block/' + block.previous_hash">{{ block.previous_hash }}</router-link>
+						<router-link class="link" :to="'/block/' + block.previous_hash">{{ block.previous_hash }}</router-link>
 					</td>
 				</tr>
 				<tr v-if="block" class="
@@ -97,7 +87,7 @@ tr:nth-child(even) {
 					<td v-else class="
 						flex justify-left w-full
 					">
-        				<router-link class="link" :to="'/address/' + block.public_key">{{ block.public_key }}</router-link>
+						<router-link class="link" :to="'/address/' + block.public_key">{{ block.public_key }}</router-link>
 					</td>
 				</tr>
 				<tr v-if="block" class="
@@ -134,38 +124,30 @@ tr:nth-child(even) {
 					">{{ block.stakes.length }}</td>
 				</tr>
 			</table>
-			<table v-if="block">
-				<tr class="mx-auto text-xl flex justify-center pb-2">Transactions</tr>
-    			<div v-if="!block.transactions.length" class="text-center italic">This block does not include any transactions.</div>
-				<tr v-for="(hash, index) in block.transactions" :key="(hash, index)" class="
-						flex w-full
-					">
-					<td class="
-						flex flex-col justify-center
-					">#{{ index }}</td>
-					<td class="
-						flex justify-center w-full
-					">
-        				<router-link class="link" :to="('/transaction/' + hash)">{{ hash }}</router-link>
-					</td>
-				</tr>
-			</table>
-			<table v-if="block">
-				<tr class="mx-auto text-xl flex justify-center pb-2">Stakes</tr>
-    			<div v-if="!block.stakes.length" class="text-center italic">This block does not include any stakes.</div>
-				<tr v-for="(hash, index) in block.stakes" :key="(hash, index)" class="
-						flex w-full
-					">
-					<td class="
-						flex flex-col justify-center
-					">#{{ index }}</td>
-					<td class="
-						flex justify-center w-full
-					">
-        				<router-link class="link" :to="('/stake/' + hash)">{{ hash }}</router-link>
-					</td>
-				</tr>
-			</table>
+		</Description>
+		<Description>
+			<Table v-if="block">
+				<TableRow class="text-xl justify-center pb-2">Transactions</TableRow>
+				<div v-if="!block.transactions.length" class="text-center italic">This block does not include any transactions.</div>
+				<TableRow v-for="(hash, index) in block.transactions" :key="(hash, index)">
+					<TD1>#{{ index }}</TD1>
+					<TD2 class="justify-center">
+						<router-link class="link" :to="('/transaction/' + hash)">{{ hash }}</router-link>
+					</TD2>
+				</TableRow>
+			</Table>
+		</Description>
+		<Description>
+			<Table v-if="block">
+				<TableRow class="text-xl justify-center pb-2">Stakes</TableRow>
+				<div v-if="!block.stakes.length" class="text-center italic">This block does not include any stakes.</div>
+				<TableRow v-for="(hash, index) in block.stakes" :key="(hash, index)">
+					<TD1>#{{ index }}</TD1>
+					<TD2 class="justify-center">
+						<router-link class="link" :to="('/stake/' + hash)">{{ hash }}</router-link>
+					</TD2>
+				</TableRow>
+			</Table>
 			<div class="my-40"></div>
 		</Description>
 	</div>

@@ -1,15 +1,14 @@
 <template>
     <div class="
-        shadow-lg
-        flex
-        flex-col
-        px-2
-        sm:px-4
-        lg:px-40
-        py-4
-        bg-white
-        xl:rounded
-    ">
-        <slot></slot>
+        flex flex-col
+        prose sm:prose-lg
+        mx-auto
+        w-full
+    " style="max-width: 60rem;">
+        <div class="m-2">
+            <div>
+                <slot></slot>
+            </div>
+        </div>
     </div>
 </template>
