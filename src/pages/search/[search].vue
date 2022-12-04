@@ -1,18 +1,9 @@
 <template>
-	<div class="
-		mx-auto
-		w-full
-		h-full
-		flex
-		flex-col
-		justify-center
-		prose sm:prose-lg
-		md:max-w-7xl
-		grid md:grid-cols-2 gap-2 sm:gap-6
-	">
-		<Description class="col-span-full text-justify md:text-left">
-			<Search v-if="timeout" failed=failed />
-			<div class="my-40"></div>
+	<div class="flex flex-col gap-2 my-2 w-full">
+		<Description class="text-center">
+			<h2 style="font-weight: 300;">Search</h2>
+			<h4 class="uppercase pb-12" style="font-weight: 600;">{{ $route.params.search }}</h4>
+			<div v-if="failed" class="italic">We couldn’t find what you are looking for.</div>
 		</Description>
 	</div>
 </template>
