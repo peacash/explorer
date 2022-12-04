@@ -1,6 +1,6 @@
 <template>
-    <div>API endpoint <i>{{ api }}</i> seems unresponsive.</div>
-    <div v-if="https">
+    <div class="text-center">API endpoint <i>{{ api }}</i> seems unresponsive.</div>
+    <div v-if="https" class="text-center">
         Try the
         <a :href="'http://' + host">http version</a>
         of this website.

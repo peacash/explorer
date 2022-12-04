@@ -9,10 +9,10 @@
 <template>
 	<div class="flex flex-col gap-2 my-2 w-full">
 		<Description>
-			<div v-if="(!sync && !ifo && !dynamic && !trusted && timeout)" class="flex flex-col justify-center mx-auto my-4">
+			<div v-if="(!sync && !info && !dynamic && !trusted && timeout)" class="flex flex-col justify-center mx-auto my-4">
 				<Unresponsive :api="api" />
 			</div>
-			<Table :bar="true">
+			<Table :bar="true" v-if="(sync && info)">
 				<TableRow class="text-xl justify-center pb-2">General information about Node</TableRow>
 				<TableRow v-if="sync">
 					<TD1 class="w-60">Synchronization</TD1>	
