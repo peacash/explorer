@@ -77,7 +77,6 @@
 					</TD2>
 				</TableRow>
 			</Table>
-			<div class="my-40"></div>
 		</Description>
 	</div>
 </template>

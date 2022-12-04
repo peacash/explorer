@@ -73,7 +73,6 @@
 				</TableRow>
 			</Table>
 		</Description>
-		<div class="my-40"></div>
 	</div>
 </template>
 <script>

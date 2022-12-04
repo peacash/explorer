@@ -46,7 +46,6 @@
 					<TD2 v-else>{{ stake.signature }}</TD2>
 				</TableRow>
 			</Table>
-			<div class="my-40"></div>
 		</Description>
 	</div>
 </template>

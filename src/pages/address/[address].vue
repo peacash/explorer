@@ -25,7 +25,6 @@
 					<TD2>{{ balance_to_string(balance_staked) }}</TD2>
 				</TableRow>
 			</Table>
-			<div class="my-40"></div>
 		</Description>
 	</div>
 </template>

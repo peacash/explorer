@@ -48,7 +48,6 @@
 					<TD2 v-else>{{ transaction.signature }}</TD2>
 				</TableRow>
 			</Table>
-			<div class="my-40"></div>
 		</Description>
 	</div>
 </template>
