@@ -1,18 +1,10 @@
 <style scoped>
-td {
-	padding: 8px;
-	font-family: 'Courier New', Courier, monospace;
-}
-td:nth-child(even) {
-	word-break: break-word;
-}
-tr:nth-child(even) {
-	background-color: #f6f6f6;
-}
-.link { text-decoration: none; font-weight: 600; }
-.link:hover {
-	text-decoration: underline;
-}
+	.link {
+		text-decoration: none;
+	}
+	.link:hover {
+		text-decoration: underline;
+	}
 </style>
 <template>
 	<div class="flex flex-col gap-2 my-2 w-full">
