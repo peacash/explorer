@@ -12,50 +12,36 @@
 			<Table>
 				<TableRow class="text-xl justify-center pb-2">Stake</TableRow>
 				<TableRow v-if="stake">
-					<TD1 class="
-						w-60
-					">Hash</TD1>
+					<TD1 class="w-60">Hash</TD1>
 					<TD2 v-if="shorten_hash" @click="(shorten_hash = false)">{{ shorten(stake.hash) }}</TD2>
 					<TD2 v-else >{{ stake.hash }}</TD2>
 				</TableRow>
 				<TableRow v-if="stake">
-					<TD1 class="
-						w-60
-					">Public&nbsp;key</TD1>
+					<TD1 class="w-60">Public&nbsp;key</TD1>
 					<TD2 v-if="shorten_public_key" @click="(shorten_public_key = false)">{{ shorten(stake.public_key) }}</TD2>
 					<TD2 v-else >
         				<router-link class="link" :to="'/address/' + stake.public_key">{{ stake.public_key }}</router-link>
 					</TD2>
 				</TableRow>
 				<TableRow v-if="stake">
-					<TD1 class="
-						w-60
-					">Action</TD1>
+					<TD1 class="w-60">Action</TD1>
 					<TD2 v-if="stake.deposit">Deposit</TD2>
 					<TD2 v-else >Withdraw</TD2>
 				</TableRow>
 				<TableRow v-if="stake">
-					<TD1 class="
-						w-60
-					">Amount</TD1>
+					<TD1 class="w-60">Amount</TD1>
 					<TD2 >{{ balance_to_string(stake.amount) }}</TD2>
 				</TableRow>
 				<TableRow v-if="stake">
-					<TD1 class="
-						w-60
-					">Fee</TD1>
+					<TD1 class="w-60">Fee</TD1>
 					<TD2 >{{ balance_to_string(stake.fee) }}</TD2>
 				</TableRow>
 				<TableRow v-if="stake">
-					<TD1 class="
-						w-60
-					">Timestamp</TD1>
+					<TD1 class="w-60">Timestamp</TD1>
 					<TD2 >{{ new Date(stake.timestamp * 1000).toLocaleString() }}</TD2>
 				</TableRow>
 				<TableRow v-if="stake">
-					<TD1 class="
-						w-60
-					">Signature</TD1>
+					<TD1 class="w-60">Signature</TD1>
 					<TD2 v-if="shorten_signature" @click="(shorten_signature = false)">{{ shorten(stake.signature) }}</TD2>
 					<TD2 v-else>{{ stake.signature }}</TD2>
 				</TableRow>

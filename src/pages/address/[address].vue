@@ -8,26 +8,20 @@
 </style>
 <template>
 	<div class="flex flex-col gap-2 my-2 w-full">
-		<Description v-if="balance !== null && balance_staked !== null" class="col-span-full text-justify md:text-left">
-			<Table :bar="true">
+		<Description>
+			<Table :bar="true" v-if="balance !== null && balance_staked !== null">
 				<TableRow class="text-xl justify-center pb-2">Address</TableRow>
 				<TableRow v-if="(public_key !== null)">
-					<TD1 class="
-						w-60
-					">Public&nbsp;key</TD1>
+					<TD1 class="w-60">Public&nbsp;key</TD1>
 					<TD2 v-if="shorten_public_key" @click="(shorten_public_key = false)">{{ shorten(public_key) }}</TD2>
 					<TD2 v-else>{{ public_key }}</TD2>
 				</TableRow>
 				<TableRow v-if="(balance !== null)">
-					<TD1 class="
-						w-60
-					">Balance</TD1>
+					<TD1 class="w-60">Balance</TD1>
 					<TD2>{{ balance_to_string(balance) }}</TD2>
 				</TableRow>
 				<TableRow v-if="(balance_staked !== null)">
-					<TD1 class="
-						w-60
-					">Balance&nbsp;staked</TD1>
+					<TD1 class="w-60">Balance&nbsp;staked</TD1>
 					<TD2>{{ balance_to_string(balance_staked) }}</TD2>
 				</TableRow>
 			</Table>
