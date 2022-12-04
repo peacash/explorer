@@ -1,124 +1,65 @@
 <style scoped>
-table {
-	font-weight: 600;
-	border-collapse: collapse;
-	width: 100%;
-}
-td {
-	padding: 8px;
-	font-family: 'Courier New', Courier, monospace;
-}
-td:nth-child(even) {
-	word-break: break-word;
-}
-tr:nth-child(even) {
-	background-color: #f6f6f6;
-}
-.link { text-decoration: none; font-weight: 600; }
-.link:hover {
-	text-decoration: underline;
-}
+	.link {
+		text-decoration: none;
+	}
+	.link:hover {
+		text-decoration: underline;
+	}
 </style>
 <template>
-	<div class="
-		mx-auto
-		w-full
-		h-full
-		flex
-		flex-col
-		justify-center
-		prose sm:prose-lg
-		md:max-w-7xl
-		grid md:grid-cols-2 gap-2 sm:gap-6
-	">
-		<Description class="col-span-full text-justify md:text-left">
-			<table class="mx-auto">
-				<tr class="mx-auto text-xl flex justify-center pb-2">Stake</tr>
-				<tr v-if="stake" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Hash</td>
-					<td v-if="shorten_hash" @click="(shorten_hash = false)" class="
-						flex justify-left w-full
-					">{{ shorten(stake.hash) }}</td>
-					<td v-else class="
-						flex justify-left w-full
-					">{{ stake.hash }}</td>
-				</tr>
-				<tr v-if="stake" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Public&nbsp;key</td>
-					<td v-if="shorten_public_key" @click="(shorten_public_key = false)" class="
-						flex justify-left w-full
-					">{{ shorten(stake.public_key) }}</td>
-					<td v-else class="
-						flex justify-left w-full
-					">
+	<div class="flex flex-col gap-2 my-2 w-full">
+		<Description>
+			<Table>
+				<TableRow class="text-xl justify-center pb-2">Stake</TableRow>
+				<TableRow v-if="stake">
+					<TD1 class="
+						w-60
+					">Hash</TD1>
+					<TD2 v-if="shorten_hash" @click="(shorten_hash = false)">{{ shorten(stake.hash) }}</TD2>
+					<TD2 v-else >{{ stake.hash }}</TD2>
+				</TableRow>
+				<TableRow v-if="stake">
+					<TD1 class="
+						w-60
+					">Public&nbsp;key</TD1>
+					<TD2 v-if="shorten_public_key" @click="(shorten_public_key = false)">{{ shorten(stake.public_key) }}</TD2>
+					<TD2 v-else >
         				<router-link class="link" :to="'/address/' + stake.public_key">{{ stake.public_key }}</router-link>
-					</td>
-				</tr>
-				<tr v-if="stake" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Action</td>
-					<td v-if="stake.deposit" class="
-						flex justify-left w-full
-					">Deposit</td>
-					<td v-else class="
-						flex justify-left w-full
-					">Withdraw</td>
-				</tr>
-				<tr v-if="stake" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Amount</td>
-					<td class="
-						flex justify-left w-full
-					">{{ balance_to_string(stake.amount) }}</td>
-				</tr>
-				<tr v-if="stake" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Fee</td>
-					<td class="
-						flex justify-left w-full
-					">{{ balance_to_string(stake.fee) }}</td>
-				</tr>
-				<tr v-if="stake" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Timestamp</td>
-					<td class="
-						flex justify-left w-full
-					">{{ new Date(stake.timestamp * 1000).toLocaleString() }}</td>
-				</tr>
-				<tr v-if="stake" class="
-					flex w-full
-				">
-					<td class="
-						flex flex-col justify-center w-60
-					">Signature</td>
-					<td v-if="shorten_signature" @click="(shorten_signature = false)" class="
-						flex justify-left w-full
-					">{{ shorten(stake.signature) }}</td>
-					<td v-else class="
-						flex justify-left w-full
-					">{{ stake.signature }}</td>
-				</tr>
-			</table>
+					</TD2>
+				</TableRow>
+				<TableRow v-if="stake">
+					<TD1 class="
+						w-60
+					">Action</TD1>
+					<TD2 v-if="stake.deposit">Deposit</TD2>
+					<TD2 v-else >Withdraw</TD2>
+				</TableRow>
+				<TableRow v-if="stake">
+					<TD1 class="
+						w-60
+					">Amount</TD1>
+					<TD2 >{{ balance_to_string(stake.amount) }}</TD2>
+				</TableRow>
+				<TableRow v-if="stake">
+					<TD1 class="
+						w-60
+					">Fee</TD1>
+					<TD2 >{{ balance_to_string(stake.fee) }}</TD2>
+				</TableRow>
+				<TableRow v-if="stake">
+					<TD1 class="
+						w-60
+					">Timestamp</TD1>
+					<TD2 >{{ new Date(stake.timestamp * 1000).toLocaleString() }}</TD2>
+				</TableRow>
+				<TableRow v-if="stake">
+					<TD1 class="
+						w-60
+					">Signature</TD1>
+					<TD2 v-if="shorten_signature" @click="(shorten_signature = false)">{{ shorten(stake.signature) }}</TD2>
+					<TD2 v-else>{{ stake.signature }}</TD2>
+				</TableRow>
+			</Table>
 			<div class="my-40"></div>
 		</Description>
 	</div>
