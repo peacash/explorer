@@ -15,9 +15,8 @@
                 v-on:input="search"
                 class="
                     text-black
-                    sm:rounded
-                    shadow-lg
-                    flex mx-auto w-full
+                    rounded
+                    w-full
                 "
                 type="text" placeholder="http://localhost:9332">
         </Description>
@@ -28,9 +27,8 @@
                 v-on:input="search"
                 class="
                     text-black
-                    sm:rounded
-                    shadow-lg
-                    flex mx-auto w-full
+                    rounded
+                    w-full
                 "
                 type="text" placeholder="Search Blockchain, Transactions, Addresses, Blocks and Stakes">
         </Description>
